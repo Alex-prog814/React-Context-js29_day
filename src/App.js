@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import MySuperButton from './componets/Button/MySuperButton';
+import Counter from './componets/Counter/Counter';
+import Counter2 from './componets/Counter2/Counter2';
+import CounterContextProvider from './counterContext';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// users
+import AddForm from './componets/AddForm/AddForm';
+import Details from './componets/Details/Details';
+import UsersList from './componets/UsersList/UsersList';
+import EditForm from './componets/EditForm/EditForm';
+import UsersContextProvider from './usersContext';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <UsersContextProvider>
+        <CounterContextProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/counter" element={<Counter />} />
+              <Route path="/counter2" element={<Counter2 />} />
+              {/* users routes */}
+              <Route path="/edit/:id" element={<EditForm />} />
+              <Route path="/details/:id" element={<Details />} />
+              <Route path="/users" element={<><AddForm /><UsersList /></>} />
+            </Routes>
+          </BrowserRouter>
+        </CounterContextProvider>
+      </UsersContextProvider>
+  )
 }
 
-export default App;
+export default App

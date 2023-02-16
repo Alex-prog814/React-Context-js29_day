@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "name": "Tom UPD",
+      "email": "tom@mail.com",
+      "age": "34",
+      "id": 1
+    },
+    {
+      "name": "Jack",
+      "email": "jack@mail.com",
+      "age": "102",
+      "id": 2
+    }
+  ]
+}
